@@ -14,9 +14,6 @@ const [weather, setweather] = useState({})
         )
       }
     })
-
-  console.log(weather);
-
   return (
     <>
     <p>A Temperatuda de {weather.name} é {weather.main.temp}ºC</p>
