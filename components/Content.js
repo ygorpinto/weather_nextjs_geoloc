@@ -3,7 +3,7 @@ import styled from 'styled-components'
 const Content = styled.div`
 @import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap');
 font-family: 'Hammersmith One', sans-serif;
-width:40%;
+width:30%;
 height:40vh;
 background-color: rgba(255, 255, 255, .15);
 text-shadow:2px 2px rgba(0,0,0,0.5);
