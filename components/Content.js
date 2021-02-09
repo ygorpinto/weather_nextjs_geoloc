@@ -3,10 +3,10 @@ import styled from 'styled-components'
 const Content = styled.div`
 @import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap');
 font-family: 'Hammersmith One', sans-serif;
-width:60%;
+width:30%;
 height:40vh;
 background-color: rgba(255, 255, 255, .15);
-text-shadow:3px 3px rgba(0,0,0,0.5);
+text-shadow:2px 2px rgba(0,0,0,0.5);
 backdrop-filter: blur(5px);
 display:flex;
 flex-direction:column;
@@ -17,7 +17,7 @@ border-radius:30px;
 border:3px 3px 3px 3px;
 @media screen and (max-width:450px){
 width:60%;
-height:40vh;
+height:30vh;
 }
 `
 
