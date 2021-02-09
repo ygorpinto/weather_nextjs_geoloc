@@ -16,7 +16,7 @@ border-radius:30px;
 border:3px 3px 3px 3px;
 @media screen and (max-width:450px){
 width:60%;
-height:50vh;
+height:40vh;
 }
 `
 
