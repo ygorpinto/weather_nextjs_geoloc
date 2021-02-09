@@ -7,10 +7,24 @@ import Content from '../components/Content'
 import { typeOf } from 'react-is';
 import Input from '../components/Input'
 import Shadow from '../components/Shadow'
+import Showdate from '../components/Showdate'
 
 export default function Home() {
 
   const [weather, setWeather] = useState("");
+  const days = ["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"];
+  const months = ["Janeiro","Fevereiro","Março","Abril","Julho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
+
+  const getDate = (data) => {
+    const date = data.getDate();
+    const month = months[data.getMonth()];
+    const day = days[data.getDay()];
+    const year = data.getFullYear();
+
+    return `${day}, ${date} de ${month} de ${year}`
+  }
+
+console.log(getDate);
 
   useEffect(() => {
     if ('geolocation' in navigator) {
@@ -29,6 +43,7 @@ export default function Home() {
           <Shadow>
             <Input placeholder="Digite a cidade aqui"></Input>
             <Content>
+            <Showdate>{getDate(new Date())}</Showdate>
               <Showcity>{weather.name}</Showcity>
               <Showtemp>{Math.round(weather.main.temp)}º C</Showtemp>
             </Content>

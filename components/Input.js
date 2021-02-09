@@ -12,7 +12,7 @@ margin:0 0 8% 0;
 border:none;
 @media screen and (max-width:450px){
     margin:0 0 20% 0;
-    width:60%;
+    width:80%;
 }
 `
 
