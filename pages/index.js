@@ -12,6 +12,8 @@ import Showdate from '../components/Showdate'
 export default function Home() {
 
   const [weather, setWeather] = useState("");
+  const [city, setcity] = useState("");
+
   const days = ["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"];
   const months = ["Janeiro","Fevereiro","Março","Abril","Julho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
 
@@ -24,8 +26,6 @@ export default function Home() {
     return `${day}, ${date} de ${month} de ${year}`
   }
 
-console.log(getDate);
-
   useEffect(() => {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(function (position) {
@@ -35,13 +35,21 @@ console.log(getDate);
       });
     }
   })
+
+  const searchWeatherbyCity = async () => {
+    const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=9bea4fffe3d51d2da210f4269fa3a525`)
+    const data = await res.json();
+  }
+
   return (
     <>
       {(typeof weather.main != "undefined") ? (
 
         <Container>
           <Shadow>
-            <Input placeholder="Digite a cidade aqui"></Input>
+            <Input 
+            onChange={e=>setcity(e.target.value)}
+            placeholder="Digite a cidade aqui"></Input>
             <Content>
             <Showdate>{getDate(new Date())}</Showdate>
               <Showcity>{weather.name}</Showcity>
