@@ -6,6 +6,7 @@ font-family: 'Hammersmith One', sans-serif;
 width:60%;
 height:40vh;
 background-color: rgba(255, 255, 255, .15);
+text-shadow:3px 3px rgba(0,0,0,0.5);
 backdrop-filter: blur(5px);
 display:flex;
 flex-direction:column;

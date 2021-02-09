@@ -7,7 +7,7 @@ display:flex;
 flex-direction:column;
 align-items:center;
 justify-content:center;
-background-color:rgba(0,0,0,0.3);
+background-color:rgba(0,0,0,0.4);
 `
 
-export default Shadow
+export default Shadow;
