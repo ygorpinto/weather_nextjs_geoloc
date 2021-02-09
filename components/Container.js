@@ -5,6 +5,8 @@ height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
+background-position:center;
+background-size:cover;
 background-image:url('https://www.wallpaperup.com/uploads/wallpapers/2012/02/25/1360/8f60022131b6389b3ddb143b9119c19e-700.jpg')
 `
 

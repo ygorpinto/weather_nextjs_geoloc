@@ -5,7 +5,7 @@ const Content = styled.div`
 font-family: 'Hammersmith One', sans-serif;
 width:60%;
 height:40vh;
-background-color: rgba(255, 255, 255, .15);  
+background-color: rgba(255, 255, 255, .15);
 backdrop-filter: blur(5px);
 display:flex;
 flex-direction:column;
