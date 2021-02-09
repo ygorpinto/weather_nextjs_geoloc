@@ -5,6 +5,8 @@ import Container from '../components/Container'
 import { useState, useEffect } from 'react'
 import Content from '../components/Content'
 import { typeOf } from 'react-is';
+import Input from '../components/Input'
+import Shadow from '../components/Shadow'
 
 export default function Home() {
 
@@ -22,11 +24,15 @@ export default function Home() {
   return (
     <>
       {(typeof weather.main != "undefined") ? (
+
         <Container>
-          <Content>
-            <Showcity>{weather.name}</Showcity>
-            <Showtemp>{Math.round(weather.main.temp)}º C</Showtemp>
-          </Content>
+          <Shadow>
+            <Input placeholder="Digite a cidade aqui"></Input>
+            <Content>
+              <Showcity>{weather.name}</Showcity>
+              <Showtemp>{Math.round(weather.main.temp)}º C</Showtemp>
+            </Content>
+          </Shadow>
         </Container>
       ) : ("")}
     </>
