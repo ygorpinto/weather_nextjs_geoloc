@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const Showdate = styled.div`
-font-size:1.2rem;
+font-size:2.5vh;
 color:white;
 margin-bottom:5%;
 `
