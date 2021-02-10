@@ -6,6 +6,12 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
   }
+  .form{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
 `
 
 const theme = {

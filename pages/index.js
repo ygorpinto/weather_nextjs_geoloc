@@ -3,11 +3,12 @@ import Showcity from '../components/Showcity'
 import Showtemp from '../components/Showtemp'
 import Container from '../components/Container'
 import { useState, useEffect } from 'react'
-import Content from '../components/Content'
 import { typeOf } from 'react-is';
+import Content from '../components/Content'
 import Input from '../components/Input'
 import Shadow from '../components/Shadow'
 import Showdate from '../components/Showdate'
+import Form from 'styled-components'
 
 export default function Home() {
 
@@ -48,12 +49,12 @@ export default function Home() {
   }
 
   const searchWeatherbyCity = (e) => {
-  e.preventDefault()
-  setgetweather(`weather?q=${city}`)
-  setgetcity(`${weather}`)
-    fetch(`https://api.openweathermap.org/data/2.5/weather?${getcity}&units=metric&appid=${API_KEY}`)
+   e.preventDefault()
+   setgetcity(`weather?q=${city}`)
+    fetch(`https://api.openweathermap.org/data/2.5/${getcity}&units=metric&appid=${API_KEY}`)
     .then(res=>res.json())
     .then(data=>setWeather(data))
+    setcity("");
     }
 
   return (
@@ -61,7 +62,9 @@ export default function Home() {
       {(typeof weather.main != "undefined") ? (
         <Container>
           <Shadow>
-            <form onSubmit={searchWeatherbyCity}>
+            <form 
+            className="form"
+            onSubmit={searchWeatherbyCity}>
             <Input 
             value={city}
             onChange={e=>setcity(e.target.value)}
