@@ -13,6 +13,10 @@ export default function Home() {
 
   const [weather, setWeather] = useState("");
   const [city, setcity] = useState("");
+  const [getcity, setgetcity] = useState("");
+  const [getweather, setgetweather] = useState("");
+
+  const API_KEY = "c4317268efb7fa13eb2c50160d102f31"
 
   const days = ["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"];
   const months = ["Janeiro","Fevereiro","Março","Abril","Julho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
@@ -26,30 +30,44 @@ export default function Home() {
     return `${day}, ${date} de ${month} de ${year}`
   }
 
-  useEffect(() => {
+  useEffect(()=>{
+    fetchbyCoord()
+  },[getweather])
+
+  const fetchbyCoord = () => {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(function (position) {
-        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&appid=9bea4fffe3d51d2da210f4269fa3a525`)
+        const lat = (position.coords.latitude)
+        const lon = (position.coords.longitude)
+        setgetweather(`weather?lat=${lat}&lon=${lon}`)
+        fetch(`https://api.openweathermap.org/data/2.5/${getweather}&units=metric&appid=${API_KEY}`)
           .then(response => response.json())
           .then(data => setWeather(data));
       });
     }
-  })
-
-  const searchWeatherbyCity = async () => {
-    const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=9bea4fffe3d51d2da210f4269fa3a525`)
-    const data = await res.json();
   }
+
+  const searchWeatherbyCity = (e) => {
+  e.preventDefault()
+  setgetweather(`weather?q=${city}`)
+  setgetcity(`${weather}`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?${getcity}&units=metric&appid=${API_KEY}`)
+    .then(res=>res.json())
+    .then(data=>setWeather(data))
+    }
 
   return (
     <>
       {(typeof weather.main != "undefined") ? (
-
         <Container>
           <Shadow>
+            <form onSubmit={searchWeatherbyCity}>
             <Input 
+            value={city}
             onChange={e=>setcity(e.target.value)}
-            placeholder="Digite a cidade aqui"></Input>
+            placeholder="Digite a cidade aqui">
+            </Input>
+            </form>
             <Content>
             <Showdate>{getDate(new Date())}</Showdate>
               <Showcity>{weather.name}</Showcity>
