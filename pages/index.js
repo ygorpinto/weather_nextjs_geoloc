@@ -32,30 +32,30 @@ export default function Home() {
   }
 
   useEffect(()=>{
-    fetchbyCoord()
-  },[getweather])
+      if ('geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          const lat = (position.coords.latitude);
+          const lon = (position.coords.longitude);
+          fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`)
+            .then(response => response.json())
+            .then(data => setWeather(data));
+        });
+      }
+  },[])
 
-  const fetchbyCoord = () => {
-    if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition(function (position) {
-        const lat = (position.coords.latitude)
-        const lon = (position.coords.longitude)
-        setgetweather(`weather?lat=${lat}&lon=${lon}`)
-        fetch(`https://api.openweathermap.org/data/2.5/${getweather}&units=metric&appid=${API_KEY}`)
-          .then(response => response.json())
-          .then(data => setWeather(data));
-      });
-    }
-  }
+  
 
-  const searchWeatherbyCity = (e) => {
-   e.preventDefault()
-   setgetcity(`weather?q=${city}`)
+  useEffect(()=>{
     fetch(`https://api.openweathermap.org/data/2.5/${getcity}&units=metric&appid=${API_KEY}`)
     .then(res=>res.json())
     .then(data=>setWeather(data))
     setcity("");
-    }
+   },[getcity])
+
+  const searchWeatherbyCity = (e) => {
+    e.preventDefault();
+    setgetcity(`weather?q=${city}`); 
+  }
 
   return (
     <>
